@@ -1,3 +1,5 @@
 export const ActionTypes = {
   FETCH_RESTAURANT: 'FETCH_RESTAURANT',
+  FETCH_ITEM: 'FETCH_ITEM',
+  FETCH_ITEMS: 'FETCH_ITEMS',
 }

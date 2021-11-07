@@ -15,3 +15,11 @@ export const fetchRestaurants = () => {
     }
   }
 }
+export const fetchItem = () => async (dispatch) => {
+  const response = await urlAxios.get(`/item/getitem/1`);
+  dispatch({ type: ActionTypes.FETCH_ITEM, payload: response.data });
+};
+export const fetchItems = () => async (dispatch) => {
+  const response = await urlAxios.get(`/item/getitem`);
+  dispatch({ type: ActionTypes.FETCH_ITEMS, payload: response.data });
+};
