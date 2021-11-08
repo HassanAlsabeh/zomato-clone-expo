@@ -1,42 +1,53 @@
-import React, { useEffect } from 'react';
-import { Button, FlatList, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
-import { useDispatch, useSelector } from 'react-redux';
+import React, { useEffect, useRef } from 'react';
+import { Animated, FlatList, ScrollView, Text, useWindowDimensions, View } from 'react-native';
+import { SafeAreaView } from 'react-native-safe-area-context';
+import { useDispatch, useSelector, connect } from 'react-redux';
+import AnimatedHeader from '../components/animatedHeader';
+import RestaurantCard from '../components/restaurantCard';
 import { fetchRestaurants } from '../redux/actions/restaurantActions';
 
-const Home = ({ navigation }) => {
+const Home = ({ navigation, fetchRestaurants }) => {
 
-  const restaurants = useSelector((state) => state.data.restaurants);
 
-  const dispatch = useDispatch();
+  // const restaurants = useSelector((state) => state.data.restaurants);
+  const restaurants = ['Item 1', 'item 2', 'item 3', 'item 4', 'Item 1', 'item 2', 'item 3', 'item 4', 'Item 1', 'item 2', 'item 3', 'item 4', 'Item 1', 'item 2', 'item 3', 'item 4', 'Item 1', 'item 2', 'item 3', 'item 4', 'Item 1', 'item 2', 'item 3', 'item 4', 'Item 1', 'item 2', 'item 3', 'item 4', 'Item 1', 'item 2', 'item 3', 'item 4', 'Item 1', 'item 2', 'item 3', 'item 4', 'Item 1', 'item 2', 'item 3', 'item 4', 'Item 1', 'item 2', 'item 3', 'item 4', 'Item 1', 'item 2', 'item 3', 'item 4', 'Item 1', 'item 2', 'item 3', 'item 4', 'Item 1', 'item 2', 'item 3', 'item 4', 'Item 1', 'item 2', 'item 3', 'item 4', 'Item 1', 'item 2', 'item 3', 'item 4'];
 
-  console.log('home restaurant data', restaurants);
+  let header = useRef(new Animated.Value(0)).current;
+  const HEADER_MAIN_HEIGHT = 150;
+  const HEADER_COLLAPSED_HEIGHT = 50;
 
-  useEffect(() => dispatch(fetchRestaurants()), [])
+  useEffect(() => {
+    fetchRestaurants();
+  }, [])
 
   return (
-    <View style={styles.container}>
-      <FlatList
-        data={restaurants}
-        renderItem={({ item }) => (
-          <TouchableOpacity
-            onPress={() => navigation.navigate("Item")}
-            style={styles.container}
-          >
-            <Text>{item.name}</Text>
-          </TouchableOpacity>
-        )}
-        key={(item) => item.id}
+    <>
+
+      <AnimatedHeader
+        header={header}
+        headerMainHeight={HEADER_MAIN_HEIGHT}
+        headerCollapsedHeight={HEADER_COLLAPSED_HEIGHT}
       />
-    </View>);
+
+      <SafeAreaView >
+        {console.log('restaurants', restaurants)}
+        <Animated.FlatList
+          data={restaurants}
+          renderItem={({ item }) => (
+            // <RestaurantCard
+            //   onPress={() => navigation.navigate("Item")}
+            //   data={item}
+            // />
+            <Text>{item}</Text>
+          )}
+          extraData={restaurants}
+          contentContainerStyle={{ paddingTop: HEADER_MAIN_HEIGHT }}
+          scrollEventThrottle={16}
+          onScroll={Animated.event([{ nativeEvent: { contentOffset: { y: header } } }])}
+        />
+      </SafeAreaView>
+    </>
+  );
 }
 
-export default Home;
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
+export default connect(null, { fetchRestaurants })(Home);
