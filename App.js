@@ -6,13 +6,13 @@ import store from './redux/store';
 import { LogBox } from 'react-native';
 
 // LogBox.ignoreAllLogs();
-
+{/* <Animated.Text style={{ borderWidth: 1, fontSize: 20, width: dimensions.width * 0.38, opacity: heroTitleOpacity }}>lorum impsum from module</Animated.Text> */ }
 export default function App() {
 
   return (
     <Provider store={store}>
       <HomeStack>
-        <StatusBar style="light" translucent={false} />
+        <StatusBar style="auto" translucent={false} />
       </HomeStack>
     </Provider>
   );

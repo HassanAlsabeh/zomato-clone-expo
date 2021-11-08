@@ -10,7 +10,7 @@ const Stack = createNativeStackNavigator();
 const HomeStack = ({ children }) => {
   return (
     <NavigationContainer>
-      <Stack.Navigator initialRouteName="Login">
+      <Stack.Navigator initialRouteName="Restaurants">
         <Stack.Screen
           name="Login"
           component={Login}
@@ -21,7 +21,11 @@ const HomeStack = ({ children }) => {
           component={Register}
           options={({ title: "Register" }, { headerShown: false })}
         />
-        <Stack.Screen name="Home" component={Home} />
+        <Stack.Screen
+          options={({ title: "Restaurants" }, { headerShown: false })}
+          name="Restaurants"
+          component={Home}
+        />
         <Stack.Screen name="Item" component={Item} />
       </Stack.Navigator>
       {children}

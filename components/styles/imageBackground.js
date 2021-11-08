@@ -6,9 +6,9 @@ const ImageBackgroundStyle = styled.ImageBackground`
   justify-content: center;
 `;
 
-const ImageBackground = ({ source, imgWidth, imgHeight, children }) => {
+const ImageBackground = ({ bgColor, source, children }) => {
   return (
-    <ImageBackgroundStyle source={source} resizeMode="cover">
+    <ImageBackgroundStyle bgColor={bgColor} source={source} resizeMode="cover">
       {children}
     </ImageBackgroundStyle>
   );

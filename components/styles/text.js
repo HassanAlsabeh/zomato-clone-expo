@@ -1,7 +1,9 @@
 import React from 'react';
-import { Dimensions } from 'react-native';
 import styled from 'styled-components/native';
 
+const SM = '3px';
+const MD = '6px';
+const LG = '10px';
 
 const TextStyle = styled.Text`
 
@@ -14,13 +16,59 @@ const TextStyle = styled.Text`
       return `background: ${props.bgColor};`
     }
   }}
-  padding:10px;
+  ${({ pdSM, pdMD, pdLG, pdSMLeft, pdMDLeft, pdLGLeft }) => {
+    console
+    switch (true) {
+      case pdSM:
+        return `padding: ${SM};`
+      case pdMD:
+        console.log("eneteed MD")
+        return `padding:${MD};`
+      case pdLG:
+        return `padding:${LG};`
+      case pdSMLeft:
+        return `padding-left: ${SM};`
+      case pdMDLeft:
+        return `padding-left:${MD};`
+      case pdLGLeft:
+        return `padding-left:${LG};`
+    }
+
+  }}
+
+  ${({ pdSMBottom, pdMDBottom, pdLGBottom }) => {
+    switch (true) {
+      case pdSMBottom:
+        console.log("eneteed")
+        return `padding-bottom:${SM};`
+      case pdMDBottom:
+        return `padding-bottom:${MD};`
+      case pdLGBottom:
+        return `padding-bottom:${LG};`
+    }
+  }}
 
 `;
 
-const Text = ({ text, bgColor, textColor, fontSize, fontWeight }) => {
+const Text = ({ pdSMBottom, pdMDBottom, pdLGBottom, pdSMLeft, pdMDLeft, pdLGLeft, pdSM, pdMD, pdLG, text, bgColor, textColor, fontSize, fontWeight }) => {
   return (
-    <TextStyle bgColor={bgColor} fontWeight={fontWeight} textColor={textColor} fontSize={fontSize}>{text}</TextStyle>
+    <TextStyle
+      pdSM={pdSM}
+      pdMD={pdMD}
+      pdLG={pdLG}
+      pdSMLeft={pdSMLeft}
+      pdMDLeft={pdMDLeft}
+      pdLGLeft={pdLGLeft}
+      pdSMBottom={pdSMBottom}
+      pdMDBottom={pdMDBottom}
+      pdLGBottom={pdLGBottom}
+      bgColor={bgColor}
+      fontWeight={fontWeight}
+      textColor={textColor}
+      fontSize={fontSize}
+    >
+      {text}
+    </TextStyle>
   );
 }
 

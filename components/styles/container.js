@@ -15,12 +15,20 @@ const CardContainer = styled.TouchableOpacity`
   align-items: ${props => props.alignCont};
   justify-content:${props => props.justCont};
   margin:${props => props.contMarg};
+  overflow:hidden;
+
+  ${({ borderRadius }) => {
+    if (borderRadius) {
+      return `border-radius: 5px;`
+    }
+  }}
 `;
 
-const Container = ({ onPress, bgColor, contPadding, alignCont, justCont, contMarg, children }) => {
+const Container = ({ borderRadius, onPress, bgColor, contPadding, alignCont, justCont, contMarg, children }) => {
   return (
     <CardContainer
       onPress={onPress}
+      borderRadius={borderRadius}
       contPadding={contPadding}
       justCont={justCont}
       alignCont={alignCont}

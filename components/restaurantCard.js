@@ -3,10 +3,12 @@ import Text from './styles/text';
 import Container from './styles/container';
 import ImageBackground from './styles/imageBackground';
 import { URL } from '../apis/config';
+import { View } from 'react-native';
 
 
 const RestaurantCard = ({ data, onPress }) => {
-  console.log("data name", data.name)
+
+  console.log("data restaurant info", data.restaurant_info)
 
   const image = {
     uri: URL + data.restaurant_info.logo
@@ -16,6 +18,7 @@ const RestaurantCard = ({ data, onPress }) => {
 
     <Container
       onPress={onPress}
+      borderRadius
       alignCont={'center'}
       justCont={'center'}
       contPadding={0}
@@ -30,8 +33,25 @@ const RestaurantCard = ({ data, onPress }) => {
           contPadding={'10px'}
           contMarg={0}
         >
-          <Text bgColor={'#fff'} fontWeight={"100"} fontSize={"18px"} textColor={'#3d3d3d'} text={data.name} />
 
+          <Text
+            pdMD
+            bgColor={'#fff'}
+            fontWeight={"100"}
+            fontSize={"18px"}
+            textColor={'#3d3d3d'}
+            text={data.name}
+          />
+
+          <Text
+            pdMDLeft
+            pdMDBottom
+            bgColor={'#fff'}
+            fontWeight={"100"}
+            fontSize={"10px"}
+            textColor={'#3d3d3d'}
+            text={data.restaurant_info.address}
+          />
         </Container>
       </ImageBackground>}
     </Container>
