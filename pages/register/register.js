@@ -1,7 +1,4 @@
-import React, { useEffect, useState } from "react";
-import urlAxios from "../../apis/axiosApi";
-import { useDispatch, useSelector } from "react-redux";
-import { loginusers } from "../../redux/actions/userAction";
+import React from "react";
 import {
   StyleSheet,
   Text,
@@ -14,22 +11,7 @@ import {
   Keyboard,
 } from "react-native";
 
-export default function Login({ navigation }) {
-  // const users = useSelector((state) => state.userdata.users);
-  const dispatch = useDispatch();
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-
-  // const handleEmail = (e) => {
-  //   const { name, value } = e.target;
-
-  //   setEmail((prev) => {
-  //     return { ...prev, [name]: value };
-  //   });
-  // };
-
-  // useEffect(() => dispatch(loginusers(email,password)), []);
-
+export default function Register() {
   return (
     <TouchableWithoutFeedback onPress={() => Keyboard.dismiss()}>
       <View style={styles.container}>
@@ -43,47 +25,38 @@ export default function Login({ navigation }) {
                 style={{ height: 100, width: 120 }}
               />
             </View>
-            <Text style={styles.loginTitleText}>Login</Text>
+            <Text style={styles.loginTitleText}>Register</Text>
             <View style={styles.hr}></View>
+            <View style={styles.inputBox}>
+              <Text style={styles.inputLabel}>Name</Text>
+              <TextInput
+                style={styles.input}
+                autoCapitalize={false}
+                keyboardType="Name"
+                textContentType="Name"
+              />
+            </View>
             <View style={styles.inputBox}>
               <Text style={styles.inputLabel}>Email</Text>
               <TextInput
                 style={styles.input}
                 autoCapitalize={false}
-                onChangeText={(email) => setEmail(email)}
                 keyboardType="email-address"
                 textContentType="emailAddress"
               />
             </View>
+
             <View style={styles.inputBox}>
               <Text style={styles.inputLabel}>Password</Text>
               <TextInput
                 style={styles.input}
                 autoCapitalize={false}
-                onChangeText={(password) => setPassword(password)}
                 secureTextEntry={true}
                 textContentType="password"
               />
             </View>
-            <TouchableOpacity
-              style={styles.loginButton}
-              onPress={() => dispatch(loginusers(email, password, navigation))}
-            >
-              <Text style={styles.loginButtonText}>Login</Text>
-            </TouchableOpacity>
-            <View>
-              <Text style={styles.registerText}>
-                Don't have an account?{" "}
-                <Text
-                  style={{ color: "rgb(0, 203, 255)" }}
-                  onPress={() => navigation.navigate("Register")}
-                >
-                  Register
-                </Text>
-              </Text>
-            </View>
-            <TouchableOpacity>
-              <Text style={styles.forgotPasswordText}>Forgot Password?</Text>
+            <TouchableOpacity style={styles.loginButton}>
+              <Text style={styles.loginButtonText}>Register</Text>
             </TouchableOpacity>
           </View>
         </View>
@@ -100,7 +73,7 @@ const styles = StyleSheet.create({
   bigCircle: {
     width: Dimensions.get("window").height * 0.7,
     height: Dimensions.get("window").height * 0.7,
-    backgroundColor: "#ff6b81",
+    backgroundColor: "#rgb(0, 203, 255)",
     borderRadius: 1000,
     position: "absolute",
     right: Dimensions.get("window").width * 0.25,
@@ -109,7 +82,7 @@ const styles = StyleSheet.create({
   smallCircle: {
     width: Dimensions.get("window").height * 0.4,
     height: Dimensions.get("window").height * 0.4,
-    backgroundColor: "#ff7979",
+    backgroundColor: "rgb(0, 203, 255)",
     borderRadius: 1000,
     position: "absolute",
     bottom: Dimensions.get("window").width * -0.2,
@@ -160,7 +133,7 @@ const styles = StyleSheet.create({
   hr: {
     width: "100%",
     height: 0.5,
-    backgroundColor: "#444",
+    backgroundColor: "rgb(0, 203, 255)",
     marginTop: 6,
   },
   inputBox: {
@@ -178,7 +151,7 @@ const styles = StyleSheet.create({
     paddingHorizontal: 10,
   },
   loginButton: {
-    backgroundColor: "#DF0038",
+    backgroundColor: "rgb(0, 203, 255)",
     marginTop: 10,
     paddingVertical: 10,
     borderRadius: 4,

@@ -7,7 +7,7 @@ const Home = ({ navigation }) => {
 
   const restaurants = useSelector((state) => state.data.restaurants);
 
-  const dispatch = useDispatch();
+  const dispatch = useDispatch(); 
 
   console.log('home restaurant data', restaurants);
 
