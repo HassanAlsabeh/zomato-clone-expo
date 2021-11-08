@@ -1,7 +1,7 @@
-import React, { useEffect, useState } from "react";
-import urlAxios from "../../apis/axiosApi";
+import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { loginusers } from "../../redux/actions/userAction";
+
 import {
   StyleSheet,
   Text,

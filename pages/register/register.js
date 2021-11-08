@@ -1,4 +1,6 @@
-import React from "react";
+import React, { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { registerusers } from "../../redux/actions/userAction";
 import {
   StyleSheet,
   Text,
@@ -11,7 +13,13 @@ import {
   Keyboard,
 } from "react-native";
 
-export default function Register() {
+export default function Register({ navigation }) {
+  const error = useSelector((user) => user.userdata.error);
+  const dispatch = useDispatch();
+  const [name, setName] = useState();
+  const [email, setEmail] = useState();
+  const [password, setPassword] = useState();
+
   return (
     <TouchableWithoutFeedback onPress={() => Keyboard.dismiss()}>
       <View style={styles.container}>
@@ -34,6 +42,7 @@ export default function Register() {
                 autoCapitalize={false}
                 keyboardType="Name"
                 textContentType="Name"
+                onChangeText={(name) => setName(name)}
               />
             </View>
             <View style={styles.inputBox}>
@@ -43,7 +52,9 @@ export default function Register() {
                 autoCapitalize={false}
                 keyboardType="email-address"
                 textContentType="emailAddress"
+                onChangeText={(email) => setEmail(email)}
               />
+              {/* {error && <Text style={{ color: "red" }}>{error.email[0]}</Text>} */}
             </View>
 
             <View style={styles.inputBox}>
@@ -53,9 +64,15 @@ export default function Register() {
                 autoCapitalize={false}
                 secureTextEntry={true}
                 textContentType="password"
+                onChangeText={(password) => setPassword(password)}
               />
             </View>
-            <TouchableOpacity style={styles.loginButton}>
+            <TouchableOpacity
+              style={styles.loginButton}
+              onPress={() =>
+                dispatch(registerusers(name, email, password, navigation))
+              }
+            >
               <Text style={styles.loginButtonText}>Register</Text>
             </TouchableOpacity>
           </View>
