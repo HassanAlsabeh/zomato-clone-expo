@@ -8,7 +8,7 @@ const reducers = combineReducers({
   item: selectedItemReducer,
   items: itemReducer,
   userdata: userReducer,
+  registerusers: userReducer,
 });
 
 export default reducers;
-

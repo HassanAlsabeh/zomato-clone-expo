@@ -3,6 +3,5 @@ export const ActionTypes = {
   FETCH_ITEM: 'FETCH_ITEM',
   FETCH_ITEMS: 'FETCH_ITEMS',
   LOGINUSERS: 'LOGINUSERS',
-}
-  
-
+  REGISTERUSERS: "REGISTERUSERS",
+};
