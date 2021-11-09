@@ -20,13 +20,15 @@ export const loginusers = (email, password, navigation) => {
       const userdata = response.data;
       if (userdata.success) {
         Store(userdata.access_token);
-        navigation.navigate("Profile");
+        navigation.navigate("Restaurants");
         dispatch({ type: ActionTypes.LOGINUSERS, payload: userdata.data });
       }
     } catch (err) {
       alert("Wrong Email or Password");
     }
+
   };
+
 };
 AsyncStorage.getAllKeys((err, keys) => {
   AsyncStorage.multiGet(keys, (error, stores) => {
