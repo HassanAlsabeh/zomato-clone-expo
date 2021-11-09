@@ -5,6 +5,8 @@ import Home from "../pages/Home";
 import Item from "../pages/Item";
 import Login from "../pages/login/login";
 import Register from "../pages/register/register";
+import Profile from "../pages/profile/profile";
+import EditUser from "../pages/profile/updateUserInfo";
 const Stack = createNativeStackNavigator();
 
 const HomeStack = ({ children }) => {
@@ -23,6 +25,16 @@ const HomeStack = ({ children }) => {
         />
         <Stack.Screen name="Home" component={Home} />
         <Stack.Screen name="Item" component={Item} />
+        <Stack.Screen
+          name="Profile"
+          component={Profile}
+          options={({ title: "Profile" }, { headerShown: false })}
+        />
+         <Stack.Screen
+          name="EditUser"
+          component={EditUser}
+          options={({ title: "EditUser" }, { headerShown: false })}
+        />
       </Stack.Navigator>
       {children}
     </NavigationContainer>

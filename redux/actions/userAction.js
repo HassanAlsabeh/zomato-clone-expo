@@ -20,25 +20,22 @@ export const loginusers = (email, password, navigation) => {
       const userdata = response.data;
       if (userdata.success) {
         Store(userdata.access_token);
-        navigation.navigate("Home");
+        navigation.navigate("Profile");
         dispatch({ type: ActionTypes.LOGINUSERS, payload: userdata.data });
       }
     } catch (err) {
       alert("Wrong Email or Password");
     }
-  
   };
-  
 };
-// AsyncStorage.getAllKeys((err, keys) => {
-//   AsyncStorage.multiGet(keys, (error, stores) => {
-//     stores.map((result, i, store) => {
-//       console.log({ [store[i][0]]: store[i][1] });
-//       return true;
-//     });
-//   });
-// });
-
+AsyncStorage.getAllKeys((err, keys) => {
+  AsyncStorage.multiGet(keys, (error, stores) => {
+    stores.map((result, i, store) => {
+      console.log({ [store[i][0]]: store[i][1] });
+      return true;
+    });
+  });
+});
 
 export const registerusers = (name, email, password, navigation) => {
   return async function (dispatch) {
@@ -68,4 +65,13 @@ export const registerusers = (name, email, password, navigation) => {
       }
     }
   };
+};
+
+export const logoutUser = async (navigation) => {
+  try {
+    await AsyncStorage.removeItem("token");
+    navigation.navigate("Login");
+  } catch (err) {
+    console.log(err);
+  }
 };
