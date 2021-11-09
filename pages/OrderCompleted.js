@@ -2,23 +2,30 @@ import React from "react";
 import { View, Text } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import AnimatedLottieView from "lottie-react-native";
+import MenuItems from "./MenuItems";
 export default function OrderCompleted() {
   return (
-    <SafeAreaView style={{ flex: 1, backgroundColor: "#fff" }}>
+    <SafeAreaView
+      style={{
+        flex: 1,
+
+        justifyContent: "space-between",
+        backgroundColor: "#fff",
+      }}
+    >
       <View
         style={{
-          margin: 20,
           alignItems: "center",
-          justifyContent:"space-between"
         }}
       >
         <AnimatedLottieView
-          style={{ height: 100, alignSelf: "center" }}
+          style={{ height: 100, alignSelf: "center", marginTop:-10 }}
           source={require("../assets/animations/check-mark.json")}
           autoPlay
           loop={false}
         />
         <Text>Order Completed</Text>
+        <MenuItems />
         <AnimatedLottieView
           style={{ height: 100, alignSelf: "center" }}
           source={require("../assets/animations/cooking.json")}

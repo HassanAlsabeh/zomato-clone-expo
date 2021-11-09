@@ -19,7 +19,6 @@ import { Constants } from "expo-constants";
 export const StyledContainer = styled.View`
   width: 100%;
   height: 80%;
-  background-color: #bed1c3;
   padding: 10px;
   border-top-left-radius: 30px;
   border-top-right-radius: 30px;
@@ -28,9 +27,15 @@ export const StyledContainer = styled.View`
 `;
 
 export const CheckoutButton = styled.TouchableOpacity`
-    position: absolute;
-    bottom:40px;
-    background-color: red;
-    padding: 10px 25px 10px 25px;
-    border-radius: 5px;
+  position: absolute;
+  bottom: 40px;
+  background-color: #e3d729;
+  padding: 10px 25px 10px 25px;
+  border-radius: 5px;
+`;
+
+export const Popuprez = styled.View`
+  flex: 1;
+  justify-content: center;
+  align-items: center;
 `;

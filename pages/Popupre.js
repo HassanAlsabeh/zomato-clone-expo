@@ -1,7 +1,11 @@
 import React, { useState, useEffect } from "react";
 import { View, Text, Modal, Image, TouchableOpacity } from "react-native";
 import OrderItem from "./OrderItem";
-import { StyledContainer, CheckoutButton } from "../styledComponent/style";
+import {
+  StyledContainer,
+  CheckoutButton,
+  Popuprez,
+} from "../styledComponent/style";
 import { useNavigation } from "@react-navigation/native";
 import AnimatedLottieView from "lottie-react-native";
 import { useDispatch, useSelector } from "react-redux";
@@ -15,20 +19,13 @@ export default function Popupre() {
     dispatch(fetchItems());
   }, []);
   const item = useSelector((state) => state.item);
-  
+
   const [loading, setLoading] = useState(false);
   console.log(item);
   const checkoutModelContent = () => {
     const navigation = useNavigation();
     return (
-      <View
-        style={{
-          flex: 1,
-          justifyContent: "center",
-          alignItems: "center",
-          marginTop: 30,
-        }}
-      >
+      <Popuprez>
         <StyledContainer>
           <View style={{ position: "absolute", left: 0, right: 0 }}>
             <Image
@@ -55,7 +52,7 @@ export default function Popupre() {
         >
           <Text>checkout 100$</Text>
         </CheckoutButton>
-      </View>
+      </Popuprez>
     );
   };
   return (
@@ -88,7 +85,7 @@ export default function Popupre() {
           View Cart
         </Text>
       </TouchableOpacity>
-      {loading ? (
+      {/* {loading ? (
         <View
           style={{
             backgroundColor: "black",
@@ -107,7 +104,7 @@ export default function Popupre() {
         </View>
       ) : (
         <></>
-      )}
+      )} */}
     </View>
   );
 }
