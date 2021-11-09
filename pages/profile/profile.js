@@ -21,6 +21,7 @@ export default function Profile({ navigation }) {
     <View style={{ flex: 1, backgroundColor: "#fff" }}>
       <ScrollView showsVerticalScrollIndicator={false}>
         <>
+        {console.log("users",users)}
           <View>
             <Image style={styles.coverImage} source={require("./cover.png")} />
           </View>
@@ -29,12 +30,14 @@ export default function Profile({ navigation }) {
             <View>
               {/* Profile Image */}
               <View style={styles.profileImageView}>
-                <Image
-                  style={styles.profileImage}
-                  source={{
-                    uri: `http://192.168.3.152:8000/${users.user_info.photo}`,
-                  }}
-                />
+                {users && users.user_info && (
+                  <Image
+                    style={styles.profileImage}
+                    source={{
+                      uri: `http://192.168.3.152:8000/${users.user_info.photo}`,
+                    }}
+                  />
+                )}
               </View>
               {/* Profile Name and Bio */}
               <View style={styles.nameAndBioView}>

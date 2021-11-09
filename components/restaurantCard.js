@@ -1,7 +1,7 @@
 import React from 'react';
-import Text from './styles/text';
-import Container from './styles/container';
-import ImageBackground from './styles/imageBackground';
+import Text from '../styledComponent/styles/text';
+import Container from '../styledComponent/styles/container';
+import ImageBackground from '../styledComponent/styles/imageBackground';
 import { URL } from '../apis/config';
 import { View } from 'react-native';
 
@@ -10,9 +10,14 @@ const RestaurantCard = ({ data, onPress }) => {
 
   console.log("data restaurant info", data.restaurant_info)
 
-  const image = {
+  let image = null;
+
+  if(data.restaurant_info){
+   image = {
     uri: URL + data.restaurant_info.logo
   };
+  }
+
 
   return (
 
@@ -25,7 +30,7 @@ const RestaurantCard = ({ data, onPress }) => {
       contMarg={'16px auto 0 auto'}
       bgColor={'#e8a0a0'}
     >
-      {data.restaurant_info && <ImageBackground source={image}>
+      {data && data.restaurant_info && <ImageBackground source={image?image:require('./rstIcon.jpg')}>
         <Container
           onPress={onPress}
           alignCont={'flex-start'}

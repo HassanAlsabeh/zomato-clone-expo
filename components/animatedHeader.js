@@ -1,7 +1,7 @@
 
 import React from 'react';
 import { useWindowDimensions } from 'react-native';
-import { AnimatedView } from '../components/styles/animatedHeaderStyle';
+import { AnimatedView } from '../styledComponent/styles/animatedHeaderStyle';
 
 const AnimatedHeader = ({ header, headerMainHeight, headerCollapsedHeight, children }) => {
   let { width } = useWindowDimensions();
