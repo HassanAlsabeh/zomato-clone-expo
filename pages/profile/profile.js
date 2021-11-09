@@ -51,7 +51,7 @@ export default function Profile({ navigation }) {
                   <Text style={styles.interactButtonText}>Edit Profile</Text>
                 </TouchableOpacity>
                 <TouchableOpacity
-                  onPress={() => dispatch(logoutUser(navigation))}
+                  onPress={() => logoutUser(navigation)}
                   style={{
                     ...styles.interactButton,
                     backgroundColor: "white",
