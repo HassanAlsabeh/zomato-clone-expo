@@ -5,7 +5,7 @@ import { useSelector, connect } from 'react-redux';
 import AnimatedHeader from '../components/animatedHeader';
 import RestaurantCard from '../components/restaurantCard';
 import { fetchRestaurants } from '../redux/actions/restaurantActions';
-import { Circle } from '../components/styles/animatedHeaderStyle';
+import { AnimatedText, Circle } from '../components/styles/animatedHeaderStyle';
 
 const Home = ({ navigation, route, fetchRestaurants }) => {
 
@@ -17,7 +17,7 @@ const Home = ({ navigation, route, fetchRestaurants }) => {
   let header = useRef(new Animated.Value(0)).current;
   const HEADER_MAIN_HEIGHT = 150;
   const HEADER_COLLAPSED_HEIGHT = 50;
-  const BIG_IMG = "https://www.linguahouse.com/linguafiles/md5/d01dfa8621f83289155a3be0970fb0cb";
+  const BIG_IMG = "https://media.cntraveler.com/photos/5b22bfdff04a775484b99dfc/5:4/w_2810,h_2248,c_limit/Alo-Restaurant__2018_Raffi-Photo-2.jpg";
 
   const headerTitleOpacity = header.interpolate({
     inputRange: [0, HEADER_MAIN_HEIGHT - HEADER_COLLAPSED_HEIGHT],
@@ -32,6 +32,8 @@ const Home = ({ navigation, route, fetchRestaurants }) => {
     extrapolate: 'clamp'
   });
 
+
+
   useEffect(() => {
     fetchRestaurants();
   }, [])
@@ -44,29 +46,26 @@ const Home = ({ navigation, route, fetchRestaurants }) => {
         headerCollapsedHeight={HEADER_COLLAPSED_HEIGHT}
       >
 
-        <Circle right top />
+        <Circle style={{ transform: [{ rotate: "180deg" }] }} right top />
         <Circle left bottom />
 
-        <Animated.Text style={{ position: "absolute", fontSize: 20, width: width * 0.35, opacity: heroTitleOpacity }}>lorum impsum from module</Animated.Text>
+        <AnimatedText style={{ opacity: heroTitleOpacity }}>lorum impsum from module</AnimatedText>
 
-        <Animated.Text style={{ textAlign: 'center', opacity: headerTitleOpacity }}>{route.name}</Animated.Text>
+        <AnimatedText center style={{ opacity: headerTitleOpacity }}>{route.name}</AnimatedText>
 
       </AnimatedHeader>
 
 
       <SafeAreaView style={{ height }}>
         {console.log('restaurants', restaurants)}
-        <ImageBackground source={{ uri: BIG_IMG }} style={StyleSheet.absoluteFill} blurRadius={80} />
+        <ImageBackground source={{ uri: BIG_IMG }} style={StyleSheet.absoluteFill} blurRadius={5} />
         <Animated.FlatList
           data={restaurants}
-          renderItem={({ item }) => (
+          renderItem={({ item, index }) => (
             <RestaurantCard
               onPress={() => navigation.navigate("Item")}
               data={item}
             />
-            // <View style={{ backgroundColor: "#fff", margin: 10, padding: 5, borderRadius: 5 }}>
-            //   <Text style={{ textAlign: "center" }} >{item}</Text>
-            // </View>
           )}
           extraData={restaurants}
           contentContainerStyle={{ paddingTop: HEADER_MAIN_HEIGHT }}
