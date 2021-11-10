@@ -1,6 +1,6 @@
 import urlAxios from "../../apis/axiosApi";
 import { ActionTypes } from "../contants/action-types";
-import { AsyncStorage } from "@react-native-async-storage/async-storage";
+import { AsyncStorage } from "react-native";
 
 const Store = async (value) => {
   try {

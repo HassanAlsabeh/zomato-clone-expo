@@ -1,7 +1,13 @@
 import urlAxios from "../../apis/axiosApi";
 import { ActionTypes } from "../contants/action-types";
 
-export const updateUserInfo = (address1, address2, phone, navigation) => {
+export const updateUserInfo = (
+  address1,
+  address2,
+  phone,
+  user_id,
+  navigation
+) => {
   console.log("ya hawa", address1);
   return async function (dispatch) {
     try {
@@ -10,7 +16,7 @@ export const updateUserInfo = (address1, address2, phone, navigation) => {
       updateduserinfo1.append("address2", address2);
       updateduserinfo1.append("phone", phone);
       const response = await urlAxios.post(
-        `/update_userinfo/11?_method=put`,
+        `/update_userinfo/${user_id}?_method=put`,
         updateduserinfo1,
         {
           headers: {

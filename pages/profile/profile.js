@@ -71,6 +71,8 @@ export default function Profile({ navigation }) {
                 </TouchableOpacity>
               </View>
               <Text>{users.user_info.address1}</Text>
+              <Text>{users.user_info.address2}</Text>
+              <Text>{users.user_info.phone}</Text>
               <View></View>
             </View>
             <View>{/* <Text>Posts content</Text> */}</View>

@@ -116,7 +116,7 @@ const styles = StyleSheet.create({
   },
   centerizedView: {
     width: "100%",
-    top: "15%",
+    top: "19%",
   },
   authBox: {
     width: "80%",
