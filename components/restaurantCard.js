@@ -28,7 +28,7 @@ const RestaurantCard = ({ data, onPress }) => {
       justCont={'center'}
       contPadding={0}
       contMarg={'16px auto 0 auto'}
-      bgColor={'#e8a0a0'}
+      bgColor={'#DF0038'}
     >
       {data && data.restaurant_info && <ImageBackground source={image?image:require('./rstIcon.jpg')}>
         <Container
@@ -41,7 +41,7 @@ const RestaurantCard = ({ data, onPress }) => {
 
           <Text
             pdMD
-            bgColor={'#e8a0a0'}
+            bgColor={'#DF0038'}
             fontWeight={"100"}
             fontSize={"18px"}
             textColor={'#fff'}
@@ -51,10 +51,10 @@ const RestaurantCard = ({ data, onPress }) => {
           <Text
             pdMDLeft
             pdLGBottom
-            bgColor={'#e8a0a0'}
+            bgColor={'#DF0038'}
             fontWeight={"100"}
             fontSize={"10px"}
-            textColor={'#fff'}
+            textColor={'#fff'}  
             text={data.restaurant_info.address}
           />
         </Container>

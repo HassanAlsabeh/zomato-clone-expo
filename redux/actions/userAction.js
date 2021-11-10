@@ -1,6 +1,6 @@
 import urlAxios from "../../apis/axiosApi";
 import { ActionTypes } from "../contants/action-types";
-import { AsyncStorage } from "react-native";
+import { AsyncStorage } from "@react-native-async-storage/async-storage";
 
 const Store = async (value) => {
   try {
@@ -26,18 +26,16 @@ export const loginusers = (email, password, navigation) => {
     } catch (err) {
       alert("Wrong Email or Password");
     }
-
   };
-
 };
-AsyncStorage.getAllKeys((err, keys) => {
-  AsyncStorage.multiGet(keys, (error, stores) => {
-    stores.map((result, i, store) => {
-      console.log({ [store[i][0]]: store[i][1] });
-      return true;
-    });
-  });
-});
+// AsyncStorage.getAllKeys((err, keys) => {
+//   AsyncStorage.multiGet(keys, (error, stores) => {
+//     stores.map((result, i, store) => {
+//       console.log({ [store[i][0]]: store[i][1] });
+//       return true;
+//     });
+//   });
+// });
 
 export const registerusers = (name, email, password, navigation) => {
   return async function (dispatch) {

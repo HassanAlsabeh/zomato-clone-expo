@@ -1,4 +1,5 @@
 import React, { useEffect, useRef } from "react";
+import { Ionicons } from "@expo/vector-icons";
 import {
   Animated,
   ImageBackground,
@@ -7,6 +8,7 @@ import {
   useWindowDimensions,
   View,
   TouchableOpacity,
+  Image
 } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { useSelector, connect } from "react-redux";
@@ -42,6 +44,18 @@ const Home = ({ navigation, route, fetchRestaurants }) => {
     extrapolate: "clamp",
   });
 
+  const bottomPositionIcon = header.interpolate({
+    inputRange: [0, HEADER_MAIN_HEIGHT - HEADER_COLLAPSED_HEIGHT],
+    outputRange: [5, HEADER_MAIN_HEIGHT - 60],
+    extrapolate: "clamp",
+  });
+
+  const topPositionIcon = header.interpolate({
+    inputRange: [0, HEADER_MAIN_HEIGHT - HEADER_COLLAPSED_HEIGHT],
+    outputRange: [HEADER_MAIN_HEIGHT - 60 , 5],
+    extrapolate: "clamp",
+  });
+
   useEffect(() => {
     fetchRestaurants();
   }, []);
@@ -56,23 +70,44 @@ const Home = ({ navigation, route, fetchRestaurants }) => {
         <Circle style={{ transform: [{ rotate: "180deg" }] }} right top />
         <TouchableOpacity
           style={{
-            width:30,
-            height:30,
+            width: 30,
+            height: 30,
             position: "absolute",
             top: 10,
             right: 10,
-            borderRadius:50,
-            backgroundColor:"white"
+            borderRadius: 50,
+            backgroundColor: "white",
           }}
           onPress={() => navigation.navigate("Profile")}
         >
           <Text>Profile</Text>
         </TouchableOpacity>
         <Circle left bottom />
+        <Animated.View
+          style={{
+            width: 40,
+            height: 40,
+            position: "absolute",
+            bottom:bottomPositionIcon,
+            top: topPositionIcon,
+            left: 10,
+            zIndex:2000
+          }}
+        >
+          <Ionicons
+            name="cart"
+            size={40}
+            color="white"
+            onPress={() => navigation.navigate("CartItems")}
+          />
+        </Animated.View>
+        <View>
+          <Ionicons />
+        </View>
 
-        <AnimatedText style={{ opacity: heroTitleOpacity }}>
-          lorum impsum from module
-        </AnimatedText>
+        <Animated.View style={{ width:150,height:120 ,opacity: heroTitleOpacity }}>
+         <Image style={{width:"100%",height:"100%"}} source={require('./register/yummy.png')}/>
+        </Animated.View>
 
         <AnimatedText center style={{ opacity: headerTitleOpacity }}>
           {route.name}
@@ -81,16 +116,16 @@ const Home = ({ navigation, route, fetchRestaurants }) => {
 
       <SafeAreaView style={{ height }}>
         {console.log("restaurants", restaurants)}
-        <ImageBackground
+        {/* <ImageBackground
           source={{ uri: BIG_IMG }}
           style={StyleSheet.absoluteFill}
           blurRadius={5}
-        />
+        /> */}
         <Animated.FlatList
           data={restaurants}
           renderItem={({ item, index }) => (
             <RestaurantCard
-              onPress={() => navigation.navigate("Popupre",{id:1})}
+              onPress={() => navigation.navigate("Popupre", { id: 1 })}
               data={item}
             />
           )}

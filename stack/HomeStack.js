@@ -9,6 +9,7 @@ import Popupre from "../pages/Popupre";
 import Register from "../pages/register/register";
 import Profile from "../pages/profile/profile";
 import EditUser from "../pages/profile/updateUserInfo";
+import CartItems from "../pages/cartItems/cartitems";
 const Stack = createNativeStackNavigator();
 
 const HomeStack = ({ children }) => {
@@ -34,12 +35,17 @@ const HomeStack = ({ children }) => {
         <Stack.Screen
           name="Profile"
           component={Profile}
-          options={({ title: "Profile" }, { headerShown: false })}
+          options={({ title: "Profile" })}
         />
          <Stack.Screen
           name="EditUser"
           component={EditUser}
-          options={({ title: "EditUser" }, { headerShown: false })}
+          options={({ title: "EditUser" })}
+        />
+          <Stack.Screen
+          name="CartItems"
+          component={CartItems}
+          options={({ title: "CartItems" })}
         />
         <Stack.Screen name="OrderCompleted" component={OrderCompleted} />
         <Stack.Screen name="Popupre" component={Popupre} />

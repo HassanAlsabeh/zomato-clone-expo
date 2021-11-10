@@ -10,7 +10,7 @@ const reducers = combineReducers({
   items: itemReducer,
   userdata: userReducer,
   registerusers: userReducer,
-  updateuserinfo: updateuserInfoReducer,
+  
 });
 
 export default reducers;

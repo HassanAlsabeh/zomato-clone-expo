@@ -12,6 +12,10 @@ export const userReducer = (state = initialState, { type, payload }) => {
       return {
         users: payload,
       };
+    case ActionTypes.UPDATE_USERINFO:
+      return {
+        users: payload,
+      };
     case ActionTypes.REGISTERUSERS:
       return {
         registerusers: payload,

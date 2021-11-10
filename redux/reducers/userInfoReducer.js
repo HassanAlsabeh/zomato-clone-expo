@@ -1,16 +1,13 @@
-import { ActionTypes } from '../contants/action-types'
+// import { ActionTypes } from '../contants/action-types'
 
-const initialState = {
-  updateuserinfo: []
-}
+// const initialState = {
+//   updateuserinfo: []
+// }
 
-export const updateuserInfoReducer = (state = initialState, { type, payload }) => {
-  switch (type) {
-    case ActionTypes.UPDATE_USERINFO:
-      return {
-        updateuserinfo: payload
-      };
-    default:
-      return state;
-  }
-}
+// export const updateuserInfoReducer = (state = initialState, { type, payload }) => {
+//   switch (type) {
+  
+//     default:
+//       return state;
+//   }
+// }

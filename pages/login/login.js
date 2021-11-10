@@ -49,7 +49,6 @@ export default function Login({ navigation }) {
               <Text style={styles.inputLabel}>Email</Text>
               <TextInput
                 style={styles.input}
-                autoCapitalize={false}
                 onChangeText={(email) => setEmail(email)}
                 keyboardType="email-address"
                 textContentType="emailAddress"
@@ -59,7 +58,6 @@ export default function Login({ navigation }) {
               <Text style={styles.inputLabel}>Password</Text>
               <TextInput
                 style={styles.input}
-                autoCapitalize={false}
                 onChangeText={(password) => setPassword(password)}
                 secureTextEntry={true}
                 textContentType="password"
@@ -67,6 +65,7 @@ export default function Login({ navigation }) {
             </View>
             <TouchableOpacity
               style={styles.loginButton}
+              CartItems
               onPress={() => dispatch(loginusers(email, password, navigation))}
             >
               <Text style={styles.loginButtonText}>Login</Text>

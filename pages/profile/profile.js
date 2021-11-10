@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { logoutUser } from "../../redux/actions/userAction";
+import { URL } from "../../apis/config";
 import {
   StyleSheet,
   Text,
@@ -21,7 +22,7 @@ export default function Profile({ navigation }) {
     <View style={{ flex: 1, backgroundColor: "#fff" }}>
       <ScrollView showsVerticalScrollIndicator={false}>
         <>
-        {console.log("users",users)}
+          {console.log("users", users)}
           <View>
             <Image style={styles.coverImage} source={require("./cover.png")} />
           </View>
@@ -34,7 +35,7 @@ export default function Profile({ navigation }) {
                   <Image
                     style={styles.profileImage}
                     source={{
-                      uri: `http://192.168.3.152:8000/${users.user_info.photo}`,
+                      uri: `${URL}${users.user_info.photo}`,
                     }}
                   />
                 )}
@@ -69,7 +70,7 @@ export default function Profile({ navigation }) {
                   </Text>
                 </TouchableOpacity>
               </View>
-              {/* Mutual Followed By Text */}
+              <Text>{users.user_info.address1}</Text>
               <View></View>
             </View>
             <View>{/* <Text>Posts content</Text> */}</View>
