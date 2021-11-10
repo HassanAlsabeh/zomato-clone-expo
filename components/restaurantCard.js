@@ -30,7 +30,7 @@ const RestaurantCard = ({ data, onPress }) => {
       contMarg={'16px auto 0 auto'}
       bgColor={'#e8a0a0'}
     >
-      {data.restaurant_info && <ImageBackground source={image ? image : require('./rest.jpg')}>
+      {<ImageBackground source={data.restaurant_info && data.restaurant_info.logo ? image : { uri: 'https://cwdaust.com.au/wpress/wp-content/uploads/2015/04/placeholder-restaurant.png' }}>
         <Container
           onPress={onPress}
           alignCont={'flex-start'}
@@ -47,7 +47,7 @@ const RestaurantCard = ({ data, onPress }) => {
             textColor={'#fff'}
             text={data.name}
           />
-
+          {console.log("restaurant info", data && data.restaurant_info)}
           <Text
             pdMDLeft
             pdLGBottom
@@ -55,7 +55,7 @@ const RestaurantCard = ({ data, onPress }) => {
             fontWeight={"100"}
             fontSize={"10px"}
             textColor={'#fff'}
-            text={data.restaurant_info.address}
+            text={data.restaurant_info && data.restaurant_info.description}
           />
         </Container>
       </ImageBackground>}

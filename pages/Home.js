@@ -61,7 +61,7 @@ const Home = ({ navigation, route, fetchRestaurants }) => {
       </AnimatedHeader>
 
 
-      <SafeAreaView style={{ height }}>
+      <SafeAreaView style={{ height, paddingBottom: 28 }}>
         {console.log('restaurants', restaurants)}
         <ImageBackground source={{ uri: BIG_IMG }} style={StyleSheet.absoluteFill} blurRadius={5} />
         <Animated.FlatList
