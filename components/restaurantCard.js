@@ -10,9 +10,14 @@ const RestaurantCard = ({ data, onPress }) => {
 
   console.log("data restaurant info", data.restaurant_info)
 
-  const image = {
-    uri: URL + data.restaurant_info.logo
-  };
+  let image = null;
+
+  if (data.restaurant_info) {
+    image = {
+      uri: URL + data.restaurant_info.logo
+    };
+  }
+
 
   return (
 
@@ -25,7 +30,7 @@ const RestaurantCard = ({ data, onPress }) => {
       contMarg={'16px auto 0 auto'}
       bgColor={'#e8a0a0'}
     >
-      {data.restaurant_info && <ImageBackground source={image}>
+      {data.restaurant_info && <ImageBackground source={image ? image : require('./rest.jpg')}>
         <Container
           onPress={onPress}
           alignCont={'flex-start'}

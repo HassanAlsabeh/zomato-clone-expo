@@ -31,9 +31,9 @@ export default function Profile({ navigation }) {
               <View style={styles.profileImageView}>
                 <Image
                   style={styles.profileImage}
-                  source={{
+                  source={users.user_info ? {
                     uri: `http://192.168.3.152:8000/${users.user_info.photo}`,
-                  }}
+                  } : { uri: 'https://www.pngfind.com/pngs/m/470-4703547_icon-user-icon-hd-png-download.png' }}
                 />
               </View>
               {/* Profile Name and Bio */}

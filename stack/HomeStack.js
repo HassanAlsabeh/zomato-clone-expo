@@ -14,7 +14,7 @@ const Stack = createNativeStackNavigator();
 const HomeStack = ({ children }) => {
   return (
     <NavigationContainer>
-      <Stack.Navigator initialRouteName="Popupre">
+      <Stack.Navigator initialRouteName="Restaurants">
         <Stack.Screen
           name="Login"
           component={Login}
@@ -36,7 +36,7 @@ const HomeStack = ({ children }) => {
           component={Profile}
           options={({ title: "Profile" }, { headerShown: false })}
         />
-         <Stack.Screen
+        <Stack.Screen
           name="EditUser"
           component={EditUser}
           options={({ title: "EditUser" }, { headerShown: false })}

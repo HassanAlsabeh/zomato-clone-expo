@@ -1,16 +1,17 @@
 import React, { useEffect, useRef } from 'react';
-import { Animated, ImageBackground, StyleSheet, Text, useWindowDimensions, View } from 'react-native';
+import { Animated, TouchableOpacity, ImageBackground, StyleSheet, Text, useWindowDimensions, View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { useSelector, connect } from 'react-redux';
 import AnimatedHeader from '../components/animatedHeader';
 import RestaurantCard from '../components/restaurantCard';
 import { fetchRestaurants } from '../redux/actions/restaurantActions';
 import { AnimatedText, Circle } from '../components/styles/animatedHeaderStyle';
+import { URL } from "../apis/config";
 
 const Home = ({ navigation, route, fetchRestaurants }) => {
 
   const { width, height } = useWindowDimensions();
-
+  const users = useSelector((state) => state.userdata.users);
   const restaurants = useSelector((state) => state.data.restaurants);
   // const restaurants = ['Item 1', 'item 2', 'item 3', 'item 4', 'Item 1', 'item 2', 'item 3', 'item 4', 'Item 1', 'item 2', 'item 3', 'item 4', 'Item 1', 'item 2', 'item 3', 'item 4', 'Item 1', 'item 2', 'item 3', 'item 4', 'Item 1', 'item 2', 'item 3', 'item 4', 'Item 1', 'item 2', 'item 3', 'item 4', 'Item 1', 'item 2', 'item 3', 'item 4', 'Item 1', 'item 2', 'item 3', 'item 4', 'Item 1', 'item 2', 'item 3', 'item 4', 'Item 1', 'item 2', 'item 3', 'item 4', 'Item 1', 'item 2', 'item 3', 'item 4', 'Item 1', 'item 2', 'item 3', 'item 4', 'Item 1', 'item 2', 'item 3', 'item 4', 'Item 1', 'item 2', 'item 3', 'item 4', 'Item 1', 'item 2', 'item 3', 'item 4'];
 
@@ -25,15 +26,12 @@ const Home = ({ navigation, route, fetchRestaurants }) => {
     extrapolate: 'clamp'
   });
 
-  const dispatch = useDispatch();
 
   const heroTitleOpacity = header.interpolate({
     inputRange: [0, HEADER_MAIN_HEIGHT - HEADER_COLLAPSED_HEIGHT],
     outputRange: [1, 0],
     extrapolate: 'clamp'
   });
-
-
 
   useEffect(() => {
     fetchRestaurants();
@@ -47,7 +45,13 @@ const Home = ({ navigation, route, fetchRestaurants }) => {
         headerCollapsedHeight={HEADER_COLLAPSED_HEIGHT}
       >
 
+
         <Circle style={{ transform: [{ rotate: "180deg" }] }} right top />
+        <TouchableOpacity onPress={() => navigation.navigate("Profile")} style={{ position: "absolute", top: 0, right: 10, margin: 5, width: 40, height: 40, overflow: "hidden", borderRadius: 1000, zIndex: 200000 }}>
+          <ImageBackground style={{ width: "100%", height: "100%" }} source={users && users.user_info ? { uri: `${URL + users.user_info.photo}` } : { uri: 'https://www.pngfind.com/pngs/m/470-4703547_icon-user-icon-hd-png-download.png' }} />
+        </TouchableOpacity>
+
+
         <Circle left bottom />
 
         <AnimatedText style={{ opacity: heroTitleOpacity }}>lorum impsum from module</AnimatedText>
