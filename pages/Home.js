@@ -7,13 +7,13 @@ import RestaurantCard from '../components/restaurantCard';
 import { fetchRestaurants } from '../redux/actions/restaurantActions';
 import { AnimatedText, Circle } from '../components/styles/animatedHeaderStyle';
 import { URL } from "../apis/config";
+import { ProfileButton } from '../components/styles/ProfileButton';
 
 const Home = ({ navigation, route, fetchRestaurants }) => {
 
   const { width, height } = useWindowDimensions();
   const users = useSelector((state) => state.userdata.users);
   const restaurants = useSelector((state) => state.data.restaurants);
-  // const restaurants = ['Item 1', 'item 2', 'item 3', 'item 4', 'Item 1', 'item 2', 'item 3', 'item 4', 'Item 1', 'item 2', 'item 3', 'item 4', 'Item 1', 'item 2', 'item 3', 'item 4', 'Item 1', 'item 2', 'item 3', 'item 4', 'Item 1', 'item 2', 'item 3', 'item 4', 'Item 1', 'item 2', 'item 3', 'item 4', 'Item 1', 'item 2', 'item 3', 'item 4', 'Item 1', 'item 2', 'item 3', 'item 4', 'Item 1', 'item 2', 'item 3', 'item 4', 'Item 1', 'item 2', 'item 3', 'item 4', 'Item 1', 'item 2', 'item 3', 'item 4', 'Item 1', 'item 2', 'item 3', 'item 4', 'Item 1', 'item 2', 'item 3', 'item 4', 'Item 1', 'item 2', 'item 3', 'item 4', 'Item 1', 'item 2', 'item 3', 'item 4'];
 
   let header = useRef(new Animated.Value(0)).current;
   const HEADER_MAIN_HEIGHT = 150;
@@ -47,9 +47,10 @@ const Home = ({ navigation, route, fetchRestaurants }) => {
 
 
         <Circle style={{ transform: [{ rotate: "180deg" }] }} right top />
-        <TouchableOpacity onPress={() => navigation.navigate("Profile")} style={{ position: "absolute", top: 0, right: 10, margin: 5, width: 40, height: 40, overflow: "hidden", borderRadius: 1000, zIndex: 200000 }}>
+
+        <ProfileButton onPress={() => navigation.navigate("Profile")}>
           <ImageBackground style={{ width: "100%", height: "100%" }} source={users && users.user_info ? { uri: `${URL + users.user_info.photo}` } : { uri: 'https://www.pngfind.com/pngs/m/470-4703547_icon-user-icon-hd-png-download.png' }} />
-        </TouchableOpacity>
+        </ProfileButton>
 
 
         <Circle left bottom />

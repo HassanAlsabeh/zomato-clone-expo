@@ -47,7 +47,7 @@ const RestaurantCard = ({ data, onPress }) => {
             textColor={'#fff'}
             text={data.name}
           />
-          {console.log("restaurant info", data && data.restaurant_info)}
+
           <Text
             pdMDLeft
             pdLGBottom
