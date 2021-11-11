@@ -56,13 +56,13 @@ const Home = ({ navigation, route, fetchRestaurants }) => {
         <Circle style={{ transform: [{ rotate: "180deg" }] }} right top />
         <TouchableOpacity
           style={{
-            width:30,
-            height:30,
+            width: 30,
+            height: 30,
             position: "absolute",
             top: 10,
             right: 10,
-            borderRadius:50,
-            backgroundColor:"white"
+            borderRadius: 50,
+            backgroundColor: "white",
           }}
           onPress={() => navigation.navigate("Profile")}
         >
@@ -90,7 +90,7 @@ const Home = ({ navigation, route, fetchRestaurants }) => {
           data={restaurants}
           renderItem={({ item, index }) => (
             <RestaurantCard
-              onPress={() => navigation.navigate("Popupre",{id:1})}
+              onPress={() => navigation.navigate("Popupre", { id: 1 })}
               data={item}
             />
           )}

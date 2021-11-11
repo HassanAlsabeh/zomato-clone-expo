@@ -1,14 +1,11 @@
 import { ActionTypes } from "../contants/action-types";
 
 const initialState = {
-  //   items: [],
+  items: [],
   //item: {},
 };
 
-export const selectedItemReducer = (
-  state = {},
-  { type, payload }
-) => {
+export const selectedItemReducer = (state = {}, { type, payload }) => {
   switch (type) {
     case ActionTypes.FETCH_ITEM:
       return { ...state, ...payload };
@@ -19,10 +16,10 @@ export const selectedItemReducer = (
   }
 };
 
-export const itemReducer = (state = [], { type, payload }) => {
+export const itemReducer = (state = initialState.items, { type, payload }) => {
   switch (type) {
-    case ActionTypes.FETCH_ITEMS:
-      return { ...state, items: payload };
+    case ActionTypes.GET_ITEMS:
+      return { items: payload };
     //   case ActionTypes.FETCH_PRODUCTS:
     //   return { ...state, products: payload };
     default:

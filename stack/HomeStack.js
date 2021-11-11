@@ -3,7 +3,7 @@ import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import Home from "../pages/Home";
 import Item from "../pages/Item";
-import Login from "../pages/login/login";
+import Login from "../pages/ResturantItems";
 import OrderCompleted from "../pages/OrderCompleted";
 import Popupre from "../pages/Popupre";
 import Register from "../pages/register/register";
@@ -36,7 +36,7 @@ const HomeStack = ({ children }) => {
           component={Profile}
           options={({ title: "Profile" }, { headerShown: false })}
         />
-         <Stack.Screen
+        <Stack.Screen
           name="EditUser"
           component={EditUser}
           options={({ title: "EditUser" }, { headerShown: false })}

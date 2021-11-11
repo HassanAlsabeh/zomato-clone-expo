@@ -11,8 +11,8 @@ import AnimatedLottieView from "lottie-react-native";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchItem, fetchItems } from "../redux/actions/restaurantActions";
 
-export default function Popupre({navigation,route}) {
-  const {id}=route.params
+export default function Popupre({ navigation, route }) {
+  const { id } = route.params;
   const [modelvisible, setModelvisible] = useState(false);
   const dispatch = useDispatch();
   useEffect(() => {
@@ -57,7 +57,7 @@ export default function Popupre({navigation,route}) {
     );
   };
 
-  console.log("id",id)
+  console.log("id", id);
   return (
     <View>
       <Modal
