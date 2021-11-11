@@ -12,9 +12,15 @@ export const updateUserInfo = (
   return async function (dispatch) {
     try {
       const updateduserinfo1 = new FormData();
-      updateduserinfo1.append("address1", address1);
-      updateduserinfo1.append("address2", address2);
+      if(address1){
+        updateduserinfo1.append("address1", address1);
+      }
+      if(address2){
+        updateduserinfo1.append("address2", address2);
+      }
+      if(phone){
       updateduserinfo1.append("phone", phone);
+      }
       const response = await urlAxios.post(
         `/update_userinfo/${user_id}?_method=put`,
         updateduserinfo1,
