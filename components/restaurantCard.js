@@ -1,7 +1,7 @@
 import React from 'react';
-import Text from './styles/text';
-import Container from './styles/container';
-import ImageBackground from './styles/imageBackground';
+import Text from '../styledComponent/styles/text';
+import Container from '../styledComponent/styles/container';
+import ImageBackground from '../styledComponent/styles/imageBackground';
 import { URL } from '../apis/config';
 import { View } from 'react-native';
 
@@ -12,10 +12,10 @@ const RestaurantCard = ({ data, onPress }) => {
 
   let image = null;
 
-  if (data.restaurant_info) {
-    image = {
-      uri: URL + data.restaurant_info.logo
-    };
+  if(data.restaurant_info){
+   image = {
+    uri: URL + data.restaurant_info.logo
+  };
   }
 
 
@@ -28,7 +28,7 @@ const RestaurantCard = ({ data, onPress }) => {
       justCont={'center'}
       contPadding={0}
       contMarg={'16px auto 0 auto'}
-      bgColor={'#e8a0a0'}
+      bgColor={'#DF0038'}
     >
       {<ImageBackground source={data.restaurant_info && data.restaurant_info.logo ? image : { uri: 'https://cwdaust.com.au/wpress/wp-content/uploads/2015/04/placeholder-restaurant.png' }}>
         <Container
@@ -41,7 +41,7 @@ const RestaurantCard = ({ data, onPress }) => {
 
           <Text
             pdMD
-            bgColor={'#e8a0a0'}
+            bgColor={'#DF0038'}
             fontWeight={"100"}
             fontSize={"18px"}
             textColor={'#fff'}
@@ -51,7 +51,7 @@ const RestaurantCard = ({ data, onPress }) => {
           <Text
             pdMDLeft
             pdLGBottom
-            bgColor={'#e8a0a0'}
+            bgColor={'#DF0038'}
             fontWeight={"100"}
             fontSize={"10px"}
             textColor={'#fff'}

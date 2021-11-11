@@ -26,18 +26,16 @@ export const loginusers = (email, password, navigation) => {
     } catch (err) {
       alert("Wrong Email or Password");
     }
-
   };
-
 };
-AsyncStorage.getAllKeys((err, keys) => {
-  AsyncStorage.multiGet(keys, (error, stores) => {
-    stores.map((result, i, store) => {
-      console.log({ [store[i][0]]: store[i][1] });
-      return true;
-    });
-  });
-});
+// AsyncStorage.getAllKeys((err, keys) => {
+//   AsyncStorage.multiGet(keys, (error, stores) => {
+//     stores.map((result, i, store) => {
+//       console.log({ [store[i][0]]: store[i][1] });
+//       return true;
+//     });
+//   });
+// });
 
 export const registerusers = (name, email, password, navigation) => {
   return async function (dispatch) {

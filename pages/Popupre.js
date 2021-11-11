@@ -11,7 +11,8 @@ import AnimatedLottieView from "lottie-react-native";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchItem, fetchItems } from "../redux/actions/restaurantActions";
 
-export default function Popupre() {
+export default function Popupre({navigation,route}) {
+  const {id}=route.params
   const [modelvisible, setModelvisible] = useState(false);
   const dispatch = useDispatch();
   useEffect(() => {
@@ -22,8 +23,8 @@ export default function Popupre() {
 
   const [loading, setLoading] = useState(false);
   console.log(item);
-  const checkoutModelContent = () => {
-    const navigation = useNavigation();
+  const checkoutModelContent = (navigation) => {
+    // const navigation = useNavigation();
     return (
       <Popuprez>
         <StyledContainer>
@@ -55,6 +56,8 @@ export default function Popupre() {
       </Popuprez>
     );
   };
+
+  console.log("id",id)
   return (
     <View>
       <Modal
@@ -63,7 +66,7 @@ export default function Popupre() {
         transparent={true}
         onRequestClose={() => setModelvisible(false)}
       >
-        {checkoutModelContent()}
+        {checkoutModelContent(navigation)}
       </Modal>
       <TouchableOpacity
         style={{
