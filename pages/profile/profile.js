@@ -22,7 +22,7 @@ export default function Profile({ navigation }) {
     <View style={{ flex: 1, backgroundColor: "#fff" }}>
       <ScrollView showsVerticalScrollIndicator={false}>
         <>
-          {console.log("users", users)}
+          {/* {console.log("users", users)} */}
           <View>
             <Image style={styles.coverImage} source={require("./cover.png")} />
           </View>
@@ -33,9 +33,15 @@ export default function Profile({ navigation }) {
               <View style={styles.profileImageView}>
                 <Image
                   style={styles.profileImage}
-                  source={users.user_info ? {
-                    uri: `http://192.168.3.152:8000/${users.user_info.photo}`,
-                  } : { uri: 'https://www.pngfind.com/pngs/m/470-4703547_icon-user-icon-hd-png-download.png' }}
+                  source={
+                    users.user_info
+                      ? {
+                          uri: `http://192.168.3.152:8000/${users.user_info.photo}`,
+                        }
+                      : {
+                          uri: "https://www.pngfind.com/pngs/m/470-4703547_icon-user-icon-hd-png-download.png",
+                        }
+                  }
                 />
               </View>
               {/* Profile Name and Bio */}
@@ -68,10 +74,14 @@ export default function Profile({ navigation }) {
                   </Text>
                 </TouchableOpacity>
               </View>
-              <Text>{users.user_info.address1}</Text>
-              <Text>{users.user_info.address2}</Text>
-              <Text>{users.user_info.phone}</Text>
-              <View></View>
+              <View style={{ alignItems: "center", marginTop: 30 }}>
+                <Text style={styles.title}>First Address:</Text>
+                <Text style={styles.content}>{users.user_info.address1}</Text>
+                <Text style={styles.title}>Second Address:</Text>
+                <Text style={styles.content}>{users.user_info.address2}</Text>
+                <Text style={styles.title}>Phone Number:</Text>
+                <Text style={styles.content}>{users.user_info.phone}</Text>
+              </View>
             </View>
             <View>{/* <Text>Posts content</Text> */}</View>
           </View>
@@ -90,6 +100,15 @@ const styles = StyleSheet.create({
     borderTopLeftRadius: 20,
     borderTopRightRadius: 20,
   },
+  title: {
+    // fontFamily: 'Verdana',
+    fontSize: 22,
+    margin: 6,
+  },
+  content: {
+    color: "#DF0038",
+    fontSize: 18,
+  },
   profileImageView: { alignItems: "center", marginTop: -50 },
   profileImage: {
     width: 100,
@@ -99,17 +118,14 @@ const styles = StyleSheet.create({
     borderColor: "#fff",
   },
   nameAndBioView: { alignItems: "center", marginTop: 10 },
-  userFullName: { fontFamily: "Serif", fontSize: 26 },
+  userFullName: { fontSize: 26 },
   userBio: {
-    fontFamily: "SSRegular",
     fontSize: 18,
     color: "#333",
     marginTop: 4,
   },
   countsView: { flexDirection: "row", marginTop: 20 },
-  countView: { flex: 1, alignItems: "center" },
-  countNum: { fontFamily: "Serif", fontSize: 20 },
-  countText: { fontFamily: "SSRegular", fontSize: 18, color: "#333" },
+
   interactButtonsView: {
     flexDirection: "row",
     marginTop: 10,
@@ -125,7 +141,6 @@ const styles = StyleSheet.create({
     borderRadius: 4,
   },
   interactButtonText: {
-    fontFamily: "Serif",
     color: "#fff",
     fontSize: 18,
     paddingVertical: 6,
@@ -142,7 +157,6 @@ const styles = StyleSheet.create({
     borderBottomColor: "#000",
   },
   showContentButtonText: {
-    fontFamily: "SSRegular",
     fontSize: 18,
   },
 });

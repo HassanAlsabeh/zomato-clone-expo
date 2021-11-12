@@ -1,7 +1,7 @@
 import React, { useState } from "react";
-import { updateUserInfo } from "../../redux/actions/userInfoActions";
-import { AntDesign } from "@expo/vector-icons";
-import * as ImagePicker from "expo-image-picker";
+import { adduserinfo } from "../../redux/actions/userInfoActions";
+
+// import * as ImagePicker from "expo-image-picker";
 import {
   View,
   Text,
@@ -15,28 +15,28 @@ import {
 import { useDispatch, useSelector } from "react-redux";
 import { URL } from "../../apis/config";
 import { ScrollView } from "react-native-gesture-handler";
-export default function UpdateUserInfo({ navigation }) {
-  const addImage = async () => {
-    let image = await ImagePicker.launchImageLibraryAsync({
-      mediaTypes: ImagePicker.MediaTypeOptions.Images,
-      allowsEditing: true,
-      aspect: [1, 1],
-      quality: 1,
-     
-    });
-     setPhoto(image)
-  };
+
+export default function AddUserInfo({ navigation }) {
+  //   const addImage = async () => {
+  //     let image = await ImagePicker.launchImageLibraryAsync({
+  //       mediaTypes: ImagePicker.MediaTypeOptions.Images,
+  //       allowsEditing: true,
+  //       aspect: [1, 1],
+  //       quality: 1,
+
+  //     });
+  //      setPhoto(image)
+  //   };
 
   const users = useSelector((state) => state.userdata.users);
   const dispatch = useDispatch();
-  const [name, setName] = useState();
-  const [email, setEmail] = useState();
+   
   const [address1, setAddress1] = useState();
   const [address2, setAddress2] = useState();
   const [phone, setPhone] = useState();
-  const [photo, setPhoto] = useState();
-  const user_id = users.user_info.id;
-  console.log("addresssssssssssssssssssssss", user_id);
+  //   const [photo, setPhoto] = useState();
+
+//   console.log("addresssssssssssssssssssssss", users.user_info.id);
   return (
     <View style={styles.container}>
       <View style={styles.headerContent}>
@@ -45,7 +45,7 @@ export default function UpdateUserInfo({ navigation }) {
           showsVerticalScrollIndicator={false}
         >
           <KeyboardAvoidingView enabled>
-            <View style={styles.container1}>
+            {/* <View style={styles.container1}>
               {
                 <Image
                   source={{
@@ -60,39 +60,24 @@ export default function UpdateUserInfo({ navigation }) {
                   <AntDesign name="camera" size={20} color="black" />
                 </TouchableOpacity>
               </View>
-            </View>
+            </View> */}
 
             <TextInput
-              defaultValue={users.name}
-              style={styles.textInputStyle}
-              underlineColorAndroid="transparent"
-              onChangeText={(name) => setName(name)}
-            
-            />
-
-            <TextInput
-              defaultValue={users.email}
-              style={styles.textInputStyle}
-              underlineColorAndroid="transparent"
-              onChangeText={(email) => setEmail(email)}
-             
-            />
-
-            <TextInput
-              defaultValue={users.user_info.address1}
+              placeholder="Address one"
               style={styles.textInputStyle}
               underlineColorAndroid="transparent"
               onChangeText={(address1) => setAddress1(address1)}
             />
 
             <TextInput
-              defaultValue={users.user_info.address2}
+              placeholder="Address two"
               style={styles.textInputStyle}
               underlineColorAndroid="transparent"
               onChangeText={(address2) => setAddress2(address2)}
             />
+
             <TextInput
-              defaultValue={users.user_info.phone}
+              placeholder="Phone Number"
               style={styles.textInputStyle}
               keyboardType="numeric"
               underlineColorAndroid="transparent"
@@ -102,20 +87,18 @@ export default function UpdateUserInfo({ navigation }) {
               style={styles.submitButton}
               onPress={() =>
                 dispatch(
-                  updateUserInfo(
-                    name,
-                    email,
+                  adduserinfo(
                     address1,
                     address2,
                     phone,
-                    user_id,
-                    photo,
+                    users.id,
+                    // photo,
                     navigation
                   )
                 )
               }
             >
-              <Text style={styles.submitButtonText}> Edit </Text>
+              <Text style={styles.submitButtonText}> Add </Text>
             </TouchableOpacity>
           </KeyboardAvoidingView>
         </ScrollView>

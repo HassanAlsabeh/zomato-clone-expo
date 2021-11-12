@@ -20,8 +20,14 @@ export const loginusers = (email, password, navigation) => {
       const userdata = response.data;
       if (userdata.success) {
         Store(userdata.access_token);
-        navigation.navigate("Restaurants");
         dispatch({ type: ActionTypes.LOGINUSERS, payload: userdata.data });
+      }
+      if (!userdata.data.user_info) {
+        navigation.navigate("AddUserInfo");
+           console.log("login id",userdata)
+      } else {
+        navigation.navigate("Restaurants");
+     
       }
     } catch (err) {
       alert("Wrong Email or Password");
@@ -75,3 +81,45 @@ export const logoutUser = async (navigation) => {
     console.log(err);
   }
 };
+
+// export const updateUser = (name, email, navigation, user_id) => {
+//   return async function (dispatch) {
+//     console.log("tttttttttttt", user_id);
+//     try {
+//       const updateuser1 = new FormData();
+
+//       if (name) {
+//         updateuser1.append("name", name);
+//       }
+//       if (email) {
+//         updateuser1.append("email", email);
+//       }
+
+//       const response = await urlAxios.post(
+//         `/update/${user_id}?_method=put`,
+//         updateuser1,
+//         {
+//           headers: {
+//             "Content-Type": "application/json",
+//             Accept: "application/json",
+//           },
+//         }
+//       );
+
+//       const userData = response.data;
+//       if (userData.success) {
+//         navigation.navigate("Profile");
+
+//         dispatch({
+//           type: ActionTypes.UPDATE_USERINFO,
+//           payload: userData.data,
+//         });
+//         alert("Successfully Updated");
+//       }
+//     } catch (err) {
+//       if (err.response) {
+//         console.log(err.response.message);
+//       }
+//     }
+//   };
+// };

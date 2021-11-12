@@ -63,5 +63,5 @@ const RestaurantCard = ({ data, onPress }) => {
 
   );
 }
-
+// #ffadad
 export default RestaurantCard;

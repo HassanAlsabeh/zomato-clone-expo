@@ -52,6 +52,8 @@ export const AnimatedText = styled(Animated.Text)`
     switch (true) {
       case center:
         return `text-align:center;`
+        case center:
+          return `font-family:center;`
     }
   }}
 `;

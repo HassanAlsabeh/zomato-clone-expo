@@ -20,6 +20,10 @@ export const userReducer = (state = initialState, { type, payload }) => {
       return {
         registerusers: payload,
       };
+      case ActionTypes.ADDUSERINFO:
+        return {
+          users: payload,
+        };
 
     default:
       return state;

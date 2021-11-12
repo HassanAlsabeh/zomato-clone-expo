@@ -10,6 +10,7 @@ import Register from "../pages/register/register";
 import Profile from "../pages/profile/profile";
 import EditUser from "../pages/profile/updateUserInfo";
 import CartItems from "../pages/cartItems/cartitems";
+import AddUserInfo from "../pages/profile/adduserinfo";
 const Stack = createNativeStackNavigator();
 
 const HomeStack = ({ children }) => {
@@ -49,6 +50,11 @@ const HomeStack = ({ children }) => {
         />
         <Stack.Screen name="OrderCompleted" component={OrderCompleted} />
         <Stack.Screen name="Popupre" component={Popupre} />
+        <Stack.Screen
+          name="AddUserInfo"
+          component={AddUserInfo}
+          options={({ title: "AddUserInfo" })}
+        />
       </Stack.Navigator>
       {children}
     </NavigationContainer>
