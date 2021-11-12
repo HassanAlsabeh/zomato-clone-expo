@@ -14,11 +14,10 @@ import {
 
 import { Icon as RNEIcon } from "react-native-elements";
 import { useDispatch, useSelector } from "react-redux";
-
+import InputSpinner from "react-native-input-spinner";
 export default function ItemCard(props) {
   const dispatch = useDispatch();
 
-  useEffect(() => {}, []);
   return (
     <>
       <TouchableOpacity
@@ -123,7 +122,14 @@ export default function ItemCard(props) {
               >
                 {props.item.description}
               </Text>
-              <View></View>
+              <View style={{ position: "absolute", right: 10, bottom: 27 }}>
+                <InputSpinner
+                  min={1}
+                  step={1}
+                  skin="clean"
+                  onChange={(e) => props.itemQuantity(e)}
+                />
+              </View>
             </View>
             <Button
               style={{ color: "red", margin: 10 }}

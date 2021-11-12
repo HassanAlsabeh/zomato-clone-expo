@@ -38,9 +38,15 @@ export default function ResturantItems({ navigation, route }) {
   const [modelvisible, setModelvisible] = useState(false);
   const [cartvisible, setCartvisible] = useState(false);
   const [item, setItem] = useState({});
+  const [quantity, setQuantity] = useState(1);
+
+  function itemQuantity(e) {
+    console.log("qutity", e);
+    setQuantity(e);
+  }
 
   function addcard(Itemid) {
-    dispatch(addtocard(userId.id, route.params.id, Itemid, 1));
+    dispatch(addtocard(userId.id, route.params.id, Itemid, quantity));
   }
 
   function hasan(item) {
@@ -82,7 +88,7 @@ export default function ResturantItems({ navigation, route }) {
     );
   };
   useEffect(() => {
-    dispatch(getitems());
+    dispatch(getitems(route.params.id));
   }, []);
 
   return (
@@ -131,6 +137,7 @@ export default function ResturantItems({ navigation, route }) {
                   category={itemCategory}
                   hasan={hasan}
                   addcard={addcard}
+                  itemQuantity={itemQuantity}
                 />
               ))}
             </>
