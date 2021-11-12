@@ -119,7 +119,7 @@ export default function ResturantItems({ navigation, route }) {
       <View style={modelvisible ? styles.opacity : styles.container}>
         {items &&
           items.restaurant_category.map((itemCategory) => (
-            <>
+            <View key={itemCategory.id}>
               <Text
                 style={{
                   color: "#111",
@@ -132,6 +132,7 @@ export default function ResturantItems({ navigation, route }) {
               </Text>
               {itemCategory.items.map((item) => (
                 <ItemCard
+                  key={item.id}
                   navigation={navigation}
                   item={item}
                   category={itemCategory}
@@ -140,7 +141,7 @@ export default function ResturantItems({ navigation, route }) {
                   itemQuantity={itemQuantity}
                 />
               ))}
-            </>
+            </View>
           ))}
       </View>
     </ScrollView>

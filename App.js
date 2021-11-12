@@ -7,7 +7,7 @@ import { LogBox } from "react-native";
 import { useFonts } from "expo-font";
 import AppLoading from "expo-app-loading";
 
-// LogBox.ignoreAllLogs();
+LogBox.ignoreAllLogs();
 export default function App() {
   let [fontsLoaded] = useFonts({
     "Inter-Black": require("./pages/Lobster-Regular.ttf"),
