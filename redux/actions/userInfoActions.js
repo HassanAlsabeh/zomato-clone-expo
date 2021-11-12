@@ -11,7 +11,6 @@ export const updateUserInfo = (
   photo,
   navigation
 ) => {
- 
   return async function (dispatch) {
     try {
       const updateduserinfo1 = new FormData();
@@ -28,7 +27,7 @@ export const updateUserInfo = (
         updateduserinfo1.append("name", name);
       }
       if (email) {
-        updateduserinfo1.append("email", email);  
+        updateduserinfo1.append("email", email);
       }
       if (photo) {
         updateduserinfo1.append("photo", photo);
@@ -61,8 +60,7 @@ export const updateUserInfo = (
   };
 };
 
-
-export const adduserinfo = (address1, address2, phone, user_id,navigation) => {
+export const adduserinfo = (address1, address2, phone, user_id, navigation) => {
   return async function (dispatch) {
     try {
       const registerdata = new FormData();
@@ -71,7 +69,7 @@ export const adduserinfo = (address1, address2, phone, user_id,navigation) => {
       registerdata.append("phone", phone);
       // registerdata.append("photo", photo);
       registerdata.append("user_id", user_id);
-      console.log("add info res",registerdata)
+      console.log("add info res", registerdata);
 
       const response = await urlAxios.post("/adduserinfo", registerdata, {
         headers: {
