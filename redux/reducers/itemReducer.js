@@ -2,7 +2,7 @@ import { ActionTypes } from "../contants/action-types";
 
 const initialState = {
   items: [],
-  //item: {},
+  addCard: [],
 };
 
 export const selectedItemReducer = (state = {}, { type, payload }) => {
@@ -22,6 +22,17 @@ export const itemReducer = (state = initialState.items, { type, payload }) => {
       return { items: payload };
     //   case ActionTypes.FETCH_PRODUCTS:
     //   return { ...state, products: payload };
+    default:
+      return state;
+  }
+};
+export const addCardReducer = (
+  state = initialState.addCard,
+  { type, payload }
+) => {
+  switch (type) {
+    case ActionTypes.ADD_TO_CARD:
+      return { addCard: payload };
     default:
       return state;
   }

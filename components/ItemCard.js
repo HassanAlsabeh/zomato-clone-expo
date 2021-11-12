@@ -1,5 +1,5 @@
 import { useNavigation } from "@react-navigation/native";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import {
   StyleSheet,
   Text,
@@ -9,12 +9,16 @@ import {
   TouchableOpacity,
   ScrollView,
   Modal,
+  Button,
 } from "react-native";
 
 import { Icon as RNEIcon } from "react-native-elements";
+import { useDispatch, useSelector } from "react-redux";
 
 export default function ItemCard(props) {
-  console.log("props", props);
+  const dispatch = useDispatch();
+
+  useEffect(() => {}, []);
   return (
     <>
       <TouchableOpacity
@@ -25,7 +29,10 @@ export default function ItemCard(props) {
           borderBottomColor: "#dfe4ea",
           borderBottomWidth: 1,
         }}
-        onPress={props.hasan}
+        onPress={() => {
+          props.hasan(props.item);
+        }}
+        id={props.item.id}
       >
         {/* Product Image View */}
         <View style={styles.cardImgWrapper}>
@@ -116,7 +123,15 @@ export default function ItemCard(props) {
               >
                 {props.item.description}
               </Text>
+              <View></View>
             </View>
+            <Button
+              style={{ color: "red", margin: 10 }}
+              onPress={() => props.addcard(props.item.id)}
+              title="Add to cart"
+              color="#841584"
+              key={props.item.id}
+            />
           </View>
           {/* -- Price View */}
         </View>

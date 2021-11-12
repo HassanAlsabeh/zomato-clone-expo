@@ -90,7 +90,7 @@ const Home = ({ navigation, route, fetchRestaurants }) => {
           data={restaurants}
           renderItem={({ item, index }) => (
             <RestaurantCard
-              onPress={() => navigation.navigate("Popupre", { id: 1 })}
+              onPress={() => navigation.navigate("Item", { id: item.id })}
               data={item}
             />
           )}

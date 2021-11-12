@@ -27,6 +27,17 @@ export const StyledContainer = styled.View`
   bottom: 0;
 `;
 
+export const ViewCart = styled.View`
+  width: 100%;
+  height: 20%;
+  padding: 10px;
+  border-top-left-radius: 30px;
+  border-top-right-radius: 30px;
+  position: absolute;
+  background-color: #fff;
+  bottom: 0;
+`;
+
 export const CheckoutButton = styled.TouchableOpacity`
   position: absolute;
   bottom: 40px;

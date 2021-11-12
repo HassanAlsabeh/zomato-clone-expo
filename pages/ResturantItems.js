@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { fetchItems } from "../redux/actions/restaurantActions";
 import { getitems } from "../redux/actions/itemsAction";
+import { addtocard } from "../redux/actions/itemsAction";
 import {
   StyleSheet,
   Text,
@@ -27,15 +28,23 @@ import { Icon as RNEIcon } from "react-native-elements";
 import { useFonts } from "expo-font";
 import { useDispatch } from "react-redux";
 import ItemCard from "../components/ItemCard";
+import { addCardReducer } from "../redux/reducers/itemReducer";
 
 export default function ResturantItems({ navigation, route }) {
-  console.log("navigation", navigation);
+  const userId = useSelector((state) => state.userdata.users);
+  console.log("restaurant id", route.params.id);
   const items = useSelector((state) => state.items.items);
   const dispatch = useDispatch();
   const [modelvisible, setModelvisible] = useState(false);
   const [cartvisible, setCartvisible] = useState(false);
+  const [item, setItem] = useState({});
 
-  function hasan() {
+  function addcard(Itemid) {
+    dispatch(addtocard(userId.id, route.params.id, Itemid, 1));
+  }
+
+  function hasan(item) {
+    setItem(item);
     setModelvisible(true);
   }
   const checkoutModelContent = (navigation) => {
@@ -62,7 +71,8 @@ export default function ResturantItems({ navigation, route }) {
           onPress={() => {
             setModelvisible(false);
             setCartvisible(true);
-
+            addcard(item.id);
+            console.log("item model", item.id);
             //navigation.navigate("OrderCompleted");
           }}
         >
@@ -92,14 +102,14 @@ export default function ResturantItems({ navigation, route }) {
         {checkoutModelContent(navigation)}
       </Modal>
 
-      <Modal
+      {/* <Modal
         animationType="slide"
         visible={cartvisible}
         transparent={true}
         onRequestClose={() => setCartvisible(false)}
       >
         <Text>etthehhethtrhtrhethetheth</Text>
-      </Modal>
+      </Modal> */}
       <View style={modelvisible ? styles.opacity : styles.container}>
         {items &&
           items.restaurant_category.map((itemCategory) => (
@@ -117,10 +127,10 @@ export default function ResturantItems({ navigation, route }) {
               {itemCategory.items.map((item) => (
                 <ItemCard
                   navigation={navigation}
-                  route={route}
                   item={item}
                   category={itemCategory}
-                  hasan={() => hasan()}
+                  hasan={hasan}
+                  addcard={addcard}
                 />
               ))}
             </>
