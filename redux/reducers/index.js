@@ -14,7 +14,6 @@ const reducers = combineReducers({
   items: itemReducer,
   userdata: userReducer,
   registerusers: userReducer,
-  updateuserinfo: updateuserInfoReducer,
   addCard: addCardReducer,
 });
 

@@ -19,7 +19,7 @@ export default function OrderCompleted() {
         }}
       >
         <AnimatedLottieView
-          style={{ height: 100, alignSelf: "center", marginTop:-10 }}
+          style={{ height: 100, alignSelf: "center", marginTop:0 }}
           source={require("../assets/animations/check-mark.json")}
           autoPlay
           loop={false}

@@ -5,7 +5,7 @@ export const Circle = styled(View)`
 
     width: ${Dimensions.get("window").height * 0.2};
     height: ${Dimensions.get("window").height * 0.2};
-    background: #ff6b81;
+    background: #DF0038;
     border-top-right-radius: 150px;
     position: absolute;
     ${({ left, right, bottom, top }) => {
@@ -52,6 +52,8 @@ export const AnimatedText = styled(Animated.Text)`
     switch (true) {
       case center:
         return `text-align:center;`
+        case center:
+          return `font-family:center;`
     }
   }}
 `;

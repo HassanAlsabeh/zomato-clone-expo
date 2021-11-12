@@ -90,7 +90,7 @@ const styles = StyleSheet.create({
   bigCircle: {
     width: Dimensions.get("window").height * 0.7,
     height: Dimensions.get("window").height * 0.7,
-    backgroundColor: "#rgb(0, 203, 255)",
+    backgroundColor: "#ff6b81",
     borderRadius: 1000,
     position: "absolute",
     right: Dimensions.get("window").width * 0.25,
@@ -99,7 +99,7 @@ const styles = StyleSheet.create({
   smallCircle: {
     width: Dimensions.get("window").height * 0.4,
     height: Dimensions.get("window").height * 0.4,
-    backgroundColor: "rgb(0, 203, 255)",
+    backgroundColor: "#ff6b81",
     borderRadius: 1000,
     position: "absolute",
     bottom: Dimensions.get("window").width * -0.2,
@@ -150,7 +150,7 @@ const styles = StyleSheet.create({
   hr: {
     width: "100%",
     height: 0.5,
-    backgroundColor: "rgb(0, 203, 255)",
+    backgroundColor: "#ff6b81",
     marginTop: 6,
   },
   inputBox: {
@@ -168,7 +168,7 @@ const styles = StyleSheet.create({
     paddingHorizontal: 10,
   },
   loginButton: {
-    backgroundColor: "rgb(0, 203, 255)",
+    backgroundColor: "#DF0038",
     marginTop: 10,
     paddingVertical: 10,
     borderRadius: 4,
